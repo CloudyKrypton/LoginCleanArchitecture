@@ -68,6 +68,37 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
             @Override
             public void keyReleased(KeyEvent e) {}
         });
+
+        passwordInputField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                SignupState currentState = signupViewModel.getState();
+                currentState.setPassword(String.valueOf(passwordInputField.getPassword()));
+                signupViewModel.setState(currentState);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+
+        repeatPasswordInputField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                SignupState currentState = signupViewModel.getState();
+                currentState.setRepeatPassword(String.valueOf(repeatPasswordInputField.getPassword()));
+                signupViewModel.setState(currentState);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
