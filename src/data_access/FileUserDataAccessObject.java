@@ -2,6 +2,7 @@ package data_access;
 
 import entity.User;
 import entity.UserFactory;
+import use_case.UserSignupDataAccessInterface;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -47,6 +48,8 @@ public class FileUserDataAccessObject implements UserSignupDataAccessInterface {
                     User user = userFactory.create(username, password, ldt);
                     accounts.put(username, user);
                 }
+            } catch (IOException e) {
+                System.out.println("Could not read from files." + e);
             }
         }
     }
